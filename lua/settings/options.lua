@@ -3,7 +3,8 @@ local options = {
 	-- number settings
 	number = true,
 	relativenumber = true,
-	-- numberwidth = 1,
+    ruler = true,
+    numberwidth = 2,
 
 	-- tab settings
 	expandtab = true,
@@ -20,14 +21,12 @@ local options = {
     -- search settings
     hlsearch = true,
     incsearch = true,
+
+
     
 
 
 	showmode = true,
-
-
-	
-
 	cmdheight = 1,
     signcolumn = "yes",
     wrap = true,
@@ -39,6 +38,7 @@ local options = {
     swapfile = false,
     backup = false,
     writebackup = false,
+    termguicolors = true,
 
 
 
