@@ -35,6 +35,13 @@ return packer.startup(function(use)
     -- colorscheme
     use { "catppuccin/nvim", as = "catppuccin" }
 
+
+    -- auto pair plugin
+    use { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end }
+
+    use { 'nvim-treesitter/nvim-treesitter'}
+
+
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
