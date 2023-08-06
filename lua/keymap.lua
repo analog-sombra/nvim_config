@@ -44,3 +44,23 @@ keymap("i", "<C-c>", "<ESC>", opts)
 --Press jk fast to exit insert mode
 keymap("i", "jk", "<ESC>", opts)
 keymap("i", "kj", "<ESC>", opts)
+
+
+-- Move text up and down
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+keymap("v", "p", '"_dP', opts)
+
+-- Visual Block --
+-- Move text up and down
+keymap("x", "J", ":m '>+1<CR>gv=gv", opts)
+keymap("x", "K", ":m '<-2<CR>gv=gv", opts)
+keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+
+-- Terminal --
+-- Better terminal navigation
+keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
+keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
+keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
+keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
