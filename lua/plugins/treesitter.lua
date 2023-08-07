@@ -28,7 +28,7 @@ return {
         opts = {
             highlight = {
                 additional_vim_highlighting = true,
-                enable = true 
+                enable = true
             },
             indent = { enable = true,disable = { "yaml"} },
             ensure_installed = {"json"},

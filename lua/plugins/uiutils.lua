@@ -5,23 +5,61 @@ return {
     {
         "SmiteshP/nvim-navic",
         lazy = true,
-        init = function()
-            vim.g.navic_silence = true
-            require("lazyvim.util").on_attach(function(client, buffer)
-                if client.server_capabilities.documentSymbolProvider then
-                    require("nvim-navic").attach(client, buffer)
-                end
-            end)
-        end,
         opts = function()
-            return {
-                separator = " ",
-                highlight = true,
-                depth_limit = 5,
-                icons = require("lazyvim.config").icons.kinds,
+            local navic = require("nvim-navic")
+            require("lspconfig").clangd.setup {
+                on_attach = function(client, bufnr)
+                    navic.attach(client, bufnr)
+                end
             }
+            navic.setup {
+                icons = {
+                    File          = "󰈙 ",
+                    Module        = " ",
+                    Namespace     = "󰌗 ",
+                    Package       = " ",
+                    Class         = "󰌗 ",
+                    Method        = "󰆧 ",
+                    Property      = " ",
+                    Field         = " ",
+                    Constructor   = " ",
+                    Enum          = "󰕘 ",
+                    Interface     = "󰕘 ",
+                    Function      = "󰊕 ",
+                    Variable      = "󰆧 ",
+                    Constant      = "󰏿 ",
+                    String        = "󰀬 ",
+                    Number        = "󰎠 ",
+                    Boolean       = "◩ ",
+                    Array         = "󰅪 ",
+                    Object        = "󰅩 ",
+                    Key           = "󰌋 ",
+                    Null          = "󰟢 ",
+                    EnumMember    = " ",
+                    Struct        = "󰌗 ",
+                    Event         = " ",
+                    Operator      = "󰆕 ",
+                    TypeParameter = "󰊄 ",
+                },
+                lsp = {
+                    auto_attach = true,
+                },
+                highlight = true,
+                separator = " > ",
+                depth_limit = 0,
+                depth_limit_indicator = "..",
+                safe_output = true,
+                lazy_update_context = false,
+                click = false
+            }
+            vim.o.winbar = "%f %{%v:lua.require'nvim-navic'.get_location()%}"
         end,
     },
+
+
+
+
+
     -- better vim.ui
     {
         "stevearc/dressing.nvim",
@@ -38,6 +76,9 @@ return {
                 return vim.ui.input(...)
             end
         end,
+        config = function ()
+            require("dressing").setup({})
+        end
     },
 
     -- indent guides for Neovim
