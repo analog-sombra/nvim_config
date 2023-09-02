@@ -10,6 +10,20 @@ return {
     opts = {
         options = {
             numbers = 'ordinal',
+            buffer_close_icon = '󰅖',
+            modified_icon = '●',
+            close_icon = '',
+            left_trunc_marker = '',
+            right_trunc_marker = '',
+            color_icons = true,
+            separator_style = "slope",
+            indicator = {
+              style = 'underline'
+            },
+            hover = {
+              enabled = true,
+              reveal = { 'close_icon' }
+            },
             -- stylua: ignore
             close_command = function(n) require("mini.bufremove").delete(n, false) end,
             -- stylua: ignore
