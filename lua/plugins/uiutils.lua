@@ -52,7 +52,6 @@ return {
                 lazy_update_context = false,
                 click = false
             }
-            vim.o.winbar = "%f %{%v:lua.require'nvim-navic'.get_location()%}"
         end,
     },
 
